@@ -10,13 +10,14 @@ public class RunStudentRecordSystem {
 
 
     /**
-     * @param srs
-     * @throws IOException
+     * @param srs Variable name for Student Record System
+     * @throws IOException Throws any exception for failures
      */
     public void runSystem(StudentRecordSystem srs) throws IOException {
         while (true) {
             System.out.println("1. Student Login");
             System.out.println("2. Faculty Login");
+            System.out.print("Select option: ");
             String command = in.nextLine().toUpperCase();
             Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +25,8 @@ public class RunStudentRecordSystem {
                 System.out.println("1. Get Transcript");
                 System.out.println("2. Get QCA");
                 System.out.println("3. Get Module Information");
-                System.out.println("4. Exit");
+                System.out.println("4. Get Course Information");
+                System.out.println("5. Exit");
                 System.out.print("Select option: ");
                 String secondcommand = in.nextLine().toUpperCase();
                 if (secondcommand.equals("1")) {
@@ -39,6 +41,10 @@ public class RunStudentRecordSystem {
                     System.out.println("Enter Module Code: ");
                     String moduleCode = scanner.next();
                     srs.getModule(moduleCode);
+                } else if (secondcommand.equals("4")) {
+                    System.out.println("Enter Course Name: ");
+                    String courseName = scanner.next();
+                    srs.getCourse(courseName);
                 } else {
                     System.out.println("Leaving Program.");
                     System.exit(0);
@@ -49,7 +55,10 @@ public class RunStudentRecordSystem {
                 System.out.println("3. Get Student Transcript");
                 System.out.println("4. Get Module Information");
                 System.out.println("5. Print Faculty Transcript");
-                System.out.println("6. Exit");
+                System.out.println("6. Get Course Information");
+                System.out.println("7. Add Student to Course");
+                System.out.println("8. Remove Student from Course");
+                System.out.println("9. Exit");
                 System.out.print("Select option: ");
                 String thirdcommand = in.nextLine().toUpperCase();
 
@@ -86,13 +95,28 @@ public class RunStudentRecordSystem {
                     System.out.println("Enter Faculty ID: ");
                     String facultyID = scanner.next();
                     srs.getFacultyTranscript(facultyID);
+                } else if (thirdcommand.equals("6")) {
+                    System.out.println("Enter Course Name: ");
+                    String courseName = scanner.next();
+                    srs.getCourse(courseName);
+                } else if (thirdcommand.equals("7")) {
+                    System.out.println("Enter Student Name: ");
+                    String studentName = scanner.next();
+                    srs.addCStudent(studentName);
+                }else if (thirdcommand.equals("8")) {
+                    System.out.println("Enter Student Name: ");
+                    String studentName = scanner.next();
+                    srs.removeCStudent(studentName);
                 } else {
-                    System.out.println("Leaving Program.");
+                System.out.println("Leaving Program.");
                     System.exit(0);
                 }
             }
         }
     }
+
+    // Assuming students is a list to store loaded student data
+    private static List<Student> students = new ArrayList<>();
 }
 
 
