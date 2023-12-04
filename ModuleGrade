@@ -1,10 +1,13 @@
- public class ModuleGrade {
+import java.util.List;
+import java.util.Map;
+
+public class ModuleGrade {
     private String moduleName;
     private String moduleCode;
-    private String grade;
+    private Map<String, List<String>> grade;
     private double credits;
 
-    public ModuleGrade(String moduleName, String moduleCode, String grade, double credits) {
+    public ModuleGrade(String moduleName, String moduleCode, Map grade, double credits) {
         this.moduleName = moduleName;
         this.moduleCode = moduleCode;
         this.grade = grade;
@@ -18,7 +21,7 @@
         return moduleCode;
     }
 
-    public String getGrade() {
+    public Map getGrade() {
         return grade;
     }
 
