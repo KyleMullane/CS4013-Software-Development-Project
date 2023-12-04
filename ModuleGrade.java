@@ -4,10 +4,11 @@ import java.util.Map;
 public class ModuleGrade {
     private String moduleName;
     private String moduleCode;
-    private Map<String, List<String>> grade;
+    private Map<String, Double> grades;
+    private double grade;
     private double credits;
 
-    public ModuleGrade(String moduleName, String moduleCode, Map grade, double credits) {
+    public ModuleGrade(String moduleName, String moduleCode, double grade, double credits) {
         this.moduleName = moduleName;
         this.moduleCode = moduleCode;
         this.grade = grade;
@@ -20,9 +21,13 @@ public class ModuleGrade {
     public String getModuleCode(){
         return moduleCode;
     }
+    public String getModule() {
+        return String.format("%s - %s (%s)", moduleName, moduleCode, grade);
+    }
+
 
     public Map getGrade() {
-        return grade;
+        return grades;
     }
 
     public double getCredits() {
@@ -36,6 +41,6 @@ public class ModuleGrade {
     }
     @Override
     public String toString() {
-        return moduleName + ": " + grade + " (" + credits + " credits)";
+        return moduleName + ": " + grades + " (" + credits + " credits)";
     }
 }
