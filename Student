@@ -5,7 +5,7 @@ import java.util.List;
 class Student {
     private String name;
     private String studentId;
-    private Module Module;
+    private ModuleGrade ModuleGrade;
     private int yearOfStudy;
     private List<ModuleGrade> grades;
     private HashMap<Object, Object> gradingScale;
@@ -14,13 +14,13 @@ class Student {
      * This method constructs student details.
      * @param name
      * @param studentId
-     * @param Module
+     * @param ModuleGrade
      * @param yearOfStudy
      */
-    public Student(String name, String studentId, Module Module, int yearOfStudy) {
+    public Student(String name, String studentId, ModuleGrade ModuleGrade, int yearOfStudy) {
         this.name = name;
         this.studentId = studentId;
-        this.Module = Module;
+        this.ModuleGrade = ModuleGrade;
         this.yearOfStudy = yearOfStudy;
         this.grades = new ArrayList<>();
     }
@@ -29,7 +29,7 @@ class Student {
         return grades;
     }
     public void displayTranscript() {
-        System.out.println("/nTranscript for: "+name+ "/nID: "+studentId+"/nModule: "+Module+"/nYear Of Study: "+yearOfStudy);
+        System.out.println("/nTranscript for: "+name+ "/nID: "+studentId+"/nModule: "+ModuleGrade+"/nYear Of Study: "+yearOfStudy);
         for (ModuleGrade grade : grades) {
             System.out.println(grade);
         }
@@ -46,8 +46,8 @@ class Student {
     public void setId(String studentId){
         this.studentId= studentId;
     }
-    public void setModule(Module Module){
-        this.Module= Module;
+    public void setModule(ModuleGrade ModuleGrade){
+        this.ModuleGrade= ModuleGrade;
     }
     public void setYearOfStudy(int yearOfStudy){
         this.yearOfStudy=yearOfStudy;
@@ -60,8 +60,8 @@ class Student {
     public String getId(){
         return studentId;
     }
-    public Module getModule(){
-        return Module;
+    public ModuleGrade getModule(){
+        return ModuleGrade;
     }
     public int getYearOfStudy(){
         return yearOfStudy;
@@ -70,6 +70,6 @@ class Student {
 
     @Override
     public String toString(){
-        return String.format("%s @ €%.2f", name,studentId,Module,yearOfStudy,grades);
+        return String.format("%s @ €%.2f", name,studentId,ModuleGrade,yearOfStudy,grades);
     }
 }
