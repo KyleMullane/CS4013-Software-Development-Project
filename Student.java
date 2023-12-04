@@ -54,32 +54,32 @@ class Student {
      * Method Sets Student Name
      * @param name Student Name
      */
-    public void setName(String name){
-        this.name= name;
+    public static void setName(Student student, String name){
+        student.name = name;
     }
 
     /**
      * Method Sets studentID
      * @param studentId Student ID
      */
-    public void setId(String studentId){
-        this.studentId= studentId;
+    public static void setId(Student student,String studentId){
+        student.studentId=studentId;
     }
 
     /**
      * Method Sets Students Module
      * @param ModuleCode Code for a Specific Module
      */
-    public void setModule(String ModuleCode){
-        this.moduleCode= ModuleCode;
+    public static void setModule(Student student,String ModuleCode){
+        student.moduleCode=ModuleCode;
     }
 
     /**
      * Method Sets students year of Study
      * @param yearOfStudy Year of Study
      */
-    public void setYearOfStudy(int yearOfStudy){
-        this.yearOfStudy=yearOfStudy;
+    public static void setYearOfStudy(Student student,int yearOfStudy){
+        student.yearOfStudy=yearOfStudy;
     }
 
     /**
