@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+class Student {
+    private String name;
+    private String studentId;
+    private Module Module;
+    private int yearOfStudy;
+    private List<ModuleGrade> grades;
+    private HashMap<Object, Object> gradingScale;
+
+    /**
+     * This method constructs student details.
+     * @param name
+     * @param studentId
+     * @param Module
+     * @param yearOfStudy
+     */
+    public Student(String name, String studentId, Module Module, int yearOfStudy) {
+        this.name = name;
+        this.studentId = studentId;
+        this.Module = Module;
+        this.yearOfStudy = yearOfStudy;
+        this.grades = new ArrayList<>();
+    }
+
+    public List<ModuleGrade> getGrades() {
+        return grades;
+    }
+    public void displayTranscript() {
+        System.out.println("/nTranscript for: "+name+ "/nID: "+studentId+"/nModule: "+Module+"/nYear Of Study: "+yearOfStudy);
+        for (ModuleGrade grade : grades) {
+            System.out.println(grade);
+        }
+        System.out.println("QCA: " + QcaCalculator.calculateQca());
+    }
+    public void addGrade(ModuleGrade grade) {
+        grades.add(grade);
+    }
+
+
+    public void setName(String name){
+        this.name= name;
+    }
+    public void setId(String studentId){
+        this.studentId= studentId;
+    }
+    public void setModule(Module Module){
+        this.Module= Module;
+    }
+    public void setYearOfStudy(int yearOfStudy){
+        this.yearOfStudy=yearOfStudy;
+    }
+
+
+    public String getName(){
+        return name;
+    }
+    public String getId(){
+        return studentId;
+    }
+    public Module getModule(){
+        return Module;
+    }
+    public int getYearOfStudy(){
+        return yearOfStudy;
+    }
+
+
+    @Override
+    public String toString(){
+        return String.format("%s @ €%.2f", name,studentId,Module,yearOfStudy,grades);
+    }
+}
