@@ -34,7 +34,7 @@ public class Faculty {
     }
 
     /**
-     * Method gets Faculty Name 
+     * Method gets Faculty Name
      * @return Returns a Value
      */
     public String getFacultyName() {
