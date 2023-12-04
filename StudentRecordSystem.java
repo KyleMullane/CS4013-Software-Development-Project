@@ -9,11 +9,17 @@ public class StudentRecordSystem {
     private final ArrayList<Faculty> facultyMembers;
     private final ArrayList<ArrayList<ModuleGrade>> moduleGrades;
     private final ArrayList<ModuleGrade> modulesList;
+    private final ArrayList<Course> studentList;
+
+    /**
+     * Creates ArrayLists for Storage
+     */
     public StudentRecordSystem() {
         this.students = new ArrayList<>();
         this.moduleGrades = new ArrayList<>();
         this.modulesList = new ArrayList<>();
         this.facultyMembers = new ArrayList<>();
+        this.studentList = new ArrayList<>();
     }
 
     /**
@@ -28,7 +34,7 @@ public class StudentRecordSystem {
     }
 
     /**
-     * Method Adds Module to arrayList 
+     * Method Adds Module to arrayList
      * @param moduleName Module Title.
      * @param moduleCode Code of a specific Module.
      * @param grade Grade.
@@ -86,5 +92,39 @@ public class StudentRecordSystem {
     public void getQCA(String studentId){
         double qca = QcaCalculator.calculateQca("student_grades.csv");
         System.out.println("/nQCA for Student: "+studentId+"/n"+qca);
+    }
+
+    /**
+     * Method Returns course information with a list of students enrolled in course
+     * @param courseName Course Name.
+     */
+    public void getCourse(String courseName){
+        System.out.println("Course: "+courseName);
+        for (Course course : studentList ){
+            course.getCourse(courseName);
+            return;
+        }
+    }
+
+    /**
+     * Method Add Student to a course
+     * @param studentName Student's Name
+     */
+    public void addCStudent(String studentName){
+        System.out.println("Student Added: "+studentName);
+        for (Course course : studentList){
+            course.addStudent(studentName);
+        }
+    }
+
+    /**
+     * Method Removes student from a course
+     * @param studentName Student's Name
+     */
+    public void removeCStudent(String studentName){
+        System.out.println("Student Removed: "+studentName);
+        for (Course course : studentList){
+            course.dropStudent(studentName);
+        }
     }
 }
