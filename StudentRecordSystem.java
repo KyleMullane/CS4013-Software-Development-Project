@@ -31,6 +31,7 @@ public class StudentRecordSystem {
     public void addStudent(String name, String studentId, String moduleCode, int yearOfStudy) {
         Student student = new Student(name, studentId,moduleCode,yearOfStudy);
         students.add(student);
+
     }
 
     /**
@@ -108,12 +109,11 @@ public class StudentRecordSystem {
 
     /**
      * Method Add Student to a course
-     * @param studentName Student's Name
      */
-    public void addCStudent(String studentName){
-        System.out.println("Student Added: "+studentName);
+    public void addCStudent(String studentId){
+        System.out.println("Student Added: "+studentId);
         for (Course course : studentList){
-            course.addStudent(studentName);
+            course.addStudent(studentId);
         }
     }
 
