@@ -11,7 +11,7 @@ public class RunStudentRecordSystem {
 
     /**
      * @param srs Variable name for Student Record System
-     * @throws IOException Throws any exception for failures
+     * @throws IOException
      */
     public void runSystem(StudentRecordSystem srs) throws IOException {
         while (true) {
