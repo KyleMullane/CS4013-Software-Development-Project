@@ -7,13 +7,13 @@ class Student {
     private String studentId;
     private String moduleCode;
     private int yearOfStudy;
-    private List<ModuleGrade> grades;
+    private ArrayList<ModuleGrade> grades;
     /**
      * This method constructs student details.
-     * @param name
-     * @param studentId
-     * @param moduleCode
-     * @param yearOfStudy
+     * @param name Student's Name
+     * @param studentId Student ID
+     * @param moduleCode Code for Specific Module
+     * @param yearOfStudy Year Of Study
      */
     public Student(String name, String studentId, String moduleCode, int yearOfStudy) {
         this.name = name;
