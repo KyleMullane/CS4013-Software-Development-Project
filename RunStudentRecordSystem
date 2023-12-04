@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -6,30 +8,37 @@ public class RunStudentRecordSystem {
 
     public RunStudentRecordSystem(){ in = new Scanner(System.in); }
 
+
     /**
-      Runs the Student Record System.
-      @throws IOException
+     * @param srs
+     * @throws IOException
      */
     public void runSystem(StudentRecordSystem srs) throws IOException {
-        boolean more = true;
-        while (more) {
+        while (true) {
             System.out.println("1. Student Login");
             System.out.println("2. Faculty Login");
             String command = in.nextLine().toUpperCase();
+            Scanner scanner = new Scanner(System.in);
 
             if (command.equals("1")) {
                 System.out.println("1. Get Transcript");
                 System.out.println("2. Get QCA");
-                System.out.println("3. Exit");
+                System.out.println("3. Get Module Information");
+                System.out.println("4. Exit");
+                System.out.print("Select option: ");
                 String secondcommand = in.nextLine().toUpperCase();
                 if (secondcommand.equals("1")) {
                     System.out.println("Enter Student ID: ");
                     String studentId = scanner.next();
-                    displayTranscript(studentId);
+                    srs.getStudentTranscript(studentId);
                 } else if (secondcommand.equals("2")) {
-                    System.out.println("enter Student ID: ");
-                    double qca = QcaCalculator.calculateQca("student_grades.csv");
-                    System.out.println("/nQCA: " + qca);
+                    System.out.println("Enter Student ID: ");
+                    String studentId = scanner.next();
+                    srs.getQCA(studentId);
+                } else if (secondcommand.equals("3")) {
+                    System.out.println("Enter Module Code: ");
+                    String moduleCode = scanner.next();
+                    srs.getModule(moduleCode);
                 } else {
                     System.out.println("Leaving Program.");
                     System.exit(0);
@@ -38,7 +47,9 @@ public class RunStudentRecordSystem {
                 System.out.println("1. Add Student");
                 System.out.println("2. Add Module ");
                 System.out.println("3. Get Student Transcript");
-                System.out.println("4. Exit");
+                System.out.println("4. Get Module Information");
+                System.out.println("5. Print Faculty Transcript");
+                System.out.println("6. Exit");
                 System.out.print("Select option: ");
                 String thirdcommand = in.nextLine().toUpperCase();
 
@@ -47,24 +58,34 @@ public class RunStudentRecordSystem {
                     String name = in.nextLine();
                     System.out.println("ID: ");
                     String studentId = in.nextLine();
-                    System.out.println("Module: ");
-                    String Module = in.nextLine();
+                    System.out.println("Module Code: ");
+                    String moduleCode = in.next();
                     System.out.println("Year Of Study: ");
                     int yearOfStudy = in.nextInt();
                     in.nextLine();
-                    srs.addStudent(name, studentId, Module, yearOfStudy);
+                    srs.addStudent(name, studentId, moduleCode, yearOfStudy);
                 } else if (thirdcommand.equals("2")) {
                     System.out.println("Module: ");
                     String moduleName = in.nextLine();
                     System.out.println("Module Code: ");
                     String moduleCode = in.nextLine();
                     System.out.println("Grade: ");
+                    double grade = in.nextDouble();
+                    System.out.println("Credits: ");
                     double credits = in.nextDouble();
-                    srs.addModule(moduleName, moduleCode, credits);
+                    srs.addModule(moduleName, moduleCode, grade, credits);
                 } else if (thirdcommand.equals("3")) {
                     System.out.println("Enter Student ID: ");
                     String studentId = scanner.next();
-                    displayTranscript(studentId);
+                    srs.getStudentTranscript(studentId);
+                } else if (thirdcommand.equals("4")) {
+                    System.out.println("Enter Module Code: ");
+                    String moduleCode = scanner.next();
+                    srs.getModule(moduleCode);
+                } else if (thirdcommand.equals("5")) {
+                    System.out.println("Enter Faculty ID: ");
+                    String facultyID = scanner.next();
+                    srs.getFacultyTranscript(facultyID);
                 } else {
                     System.out.println("Leaving Program.");
                     System.exit(0);
@@ -72,4 +93,6 @@ public class RunStudentRecordSystem {
             }
         }
     }
+}
+
 
