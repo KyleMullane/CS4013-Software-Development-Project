@@ -72,7 +72,7 @@ public class ModuleGrade {
 
     /**
      * Method Sets Module Code
-     * @param moduleCode Code for specific Module 
+     * @param moduleCode Code for specific Module
      */
     public void setModuleCode(String moduleCode){
         this.moduleCode = moduleCode;
