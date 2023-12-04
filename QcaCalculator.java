@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class QcaCalculator {
-    // Grading scale
+    // Grading 
     private static final Map<String, Double> gradingScale = new HashMap<>();
 
     static {
@@ -53,7 +53,7 @@ public class QcaCalculator {
     }
 
     public static void main(String[] args) {
-        // CSV file with student grades needed
+        // Needs CSV file with student grades
         String filePath = "student_grades.csv";
         double qca = calculateQca(filePath);
 
