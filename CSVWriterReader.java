@@ -6,13 +6,13 @@ import java.util.List;
 
 public class CSVWriterReader {
 
-    private String name;
-    private String studentId;
-    private String moduleCode;
-    private int yearOfStudy;
+    String name;
+    String studentId;
+    String moduleCode;
+    int yearOfStudy;
     private ArrayList<ModuleGrade> grades = new ArrayList();
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         String filePath = "C:\\java\\csv\\user.csv";
 
         System.out.println("starting write user.csv file: " + filePath);
@@ -22,15 +22,15 @@ public class CSVWriterReader {
         readCsv(filePath);
     }
 
-    public static void writeCsv(String filePath) {
+    public void writeCsv(String filePath) {
         List<Student> students = new ArrayList<Student>();
 
         //create test student
-        Student student = new Student();
-        Student.setId("1");
-        Student.setName("Tommy");
-        Student.setModule("A2");
-        Student.setYearOfStudy(1);
+        Student student = new Student(name,studentId,moduleCode,yearOfStudy);
+        Student.setName(student, "Tommy");
+        Student.setId(student, "1");
+        Student.setModule(student, "A2");
+        Student.setYearOfStudy(student, 1);
         students.add(student);
 
         FileWriter fileWriter = null;
@@ -62,6 +62,10 @@ public class CSVWriterReader {
 
     public static void readCsv(String filePath) {
         BufferedReader reader = null;
+        String name = "";
+        String studentId = "";
+        String moduleCode = "";
+        int yearOfStudy = 0;
 
         try {
             List<Student> students = new ArrayList<Student>();
@@ -73,11 +77,11 @@ public class CSVWriterReader {
                 String[] fields = line.split(",");
 
                 if(fields.length > 0) {
-                    Student student = new Student();
-                    student.setId((fields[0]));
-                    student.setName(fields[1]);
-                    student.setModule(fields[2]);
-                    student.setYearOfStudy(Integer.parseInt(fields[3]));
+                    Student student = new Student(name,studentId,moduleCode,yearOfStudy);
+                    student.setId(student, fields[0]);
+                    student.setName(student, fields[1]);
+                    student.setModule(student, fields[2]);
+                    student.setYearOfStudy(student,Integer.parseInt(fields[3]));
                     students.add(student);
                 }
             }
