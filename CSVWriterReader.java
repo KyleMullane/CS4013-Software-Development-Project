@@ -4,29 +4,43 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVWritterReader {
+/**
+ * This class provides functionality to write and read CSV files containing information about students and their grades.
+ */
+public class CSVWriterReader {
 
+    // Instance variables to store student information
     String name;
     String studentId;
     String moduleCode;
     int yearOfStudy;
-    private ArrayList<ModuleGrade> grades = new ArrayList();
+    private ArrayList<ModuleGrade> grades = new ArrayList<>();
 
+    /**
+     * The main method demonstrates the usage of CSVWriterReader by writing and reading a CSV file.
+     *
+     * @param args Command-line arguments (not used in this example).
+     */
     public void main(String[] args) {
         String filePath = "C:\\java\\csv\\user.csv";
 
-        System.out.println("starting write user.csv file: " + filePath);
+        System.out.println("Starting write user.csv file: " + filePath);
         writeCsv(filePath);
 
-        System.out.println("starting read user.csv file");
+        System.out.println("Starting read user.csv file");
         readCsv(filePath);
     }
 
+    /**
+     * Writes student information to a CSV file.
+     *
+     * @param filePath The path of the CSV file to be written.
+     */
     public void writeCsv(String filePath) {
-        List<Student> students = new ArrayList<Student>();
+        List<Student> students = new ArrayList<>();
 
-        //create test student
-        Student student = new Student(name,studentId,moduleCode,yearOfStudy);
+        // Create a test student
+        Student student = new Student(name, studentId, moduleCode, yearOfStudy);
         Student.setName(student, "Tommy");
         Student.setId(student, "1");
         Student.setModule(student, "A2");
@@ -37,8 +51,11 @@ public class CSVWritterReader {
         try {
             fileWriter = new FileWriter(filePath);
 
-            fileWriter.append("Student Id, Name, Grade, Year of study\n");
-            for(Student i: students) {
+            // Write header line
+            fileWriter.append("Student Id, Name, Module Code, Year of study\n");
+
+            // Write student information
+            for (Student i : students) {
                 fileWriter.append(i.getId());
                 fileWriter.append(",");
                 fileWriter.append(i.getName());
@@ -60,6 +77,11 @@ public class CSVWritterReader {
         }
     }
 
+    /**
+     * Reads student information from a CSV file and prints the details.
+     *
+     * @param filePath The path of the CSV file to be read.
+     */
     public static void readCsv(String filePath) {
         BufferedReader reader = null;
         String name = "";
@@ -68,26 +90,31 @@ public class CSVWritterReader {
         int yearOfStudy = 0;
 
         try {
-            List<Student> students = new ArrayList<Student>();
+            List<Student> students = new ArrayList<>();
             String line = "";
             reader = new BufferedReader(new FileReader(filePath));
+
+            // Skip the header line
             reader.readLine();
 
-            while((line = reader.readLine()) != null) {
+            // Read each line and create a Student object
+            while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");
 
-                if(fields.length > 0) {
-                    Student student = new Student(name,studentId,moduleCode,yearOfStudy);
+                if (fields.length > 0) {
+                    Student student = new Student(name, studentId, moduleCode, yearOfStudy);
                     student.setId(student, fields[0]);
                     student.setName(student, fields[1]);
                     student.setModule(student, fields[2]);
-                    student.setYearOfStudy(student,Integer.parseInt(fields[3]));
+                    student.setYearOfStudy(student, Integer.parseInt(fields[3]));
                     students.add(student);
                 }
             }
 
-            for(Student i: students) {
-                System.out.printf("[studentId=%s, Name=%s, Module Code=%s, yearOfStudy=%d]\n", i.getId(), i.getName(), i.getModule(), i.getYearOfStudy());
+            // Print student details
+            for (Student i : students) {
+                System.out.printf("[Student Id=%s, Name=%s, Module Code=%s, Year of Study=%d]\n",
+                        i.getId(), i.getName(), i.getModule(), i.getYearOfStudy());
             }
 
         } catch (Exception ex) {
@@ -99,6 +126,5 @@ public class CSVWritterReader {
                 e.printStackTrace();
             }
         }
-
     }
 }
