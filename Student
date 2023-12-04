@@ -33,7 +33,7 @@ class Student {
         for (ModuleGrade grade : grades) {
             System.out.println(grade);
         }
-        System.out.println("QCA: " + QcaCalculator.calculateQca());
+        System.out.println("QCA: " + QcaCalculator.calculateQca("student_grades.csv"));
     }
     public void addGrade(ModuleGrade grade) {
         grades.add(grade);
